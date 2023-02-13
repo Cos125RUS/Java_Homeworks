@@ -7,7 +7,10 @@ public class program {
         Scanner scan = new Scanner(System.in);
         System.out.print("n = ");
         int n = scan.nextInt();
-        double t = 0.5*n*(n+1);
-        System.out.printf("Tn = %.0f", t);
+        System.out.printf("Tn = %.0f", triangleNum(n));
+    }
+
+    public static double triangleNum(int n){
+        return 0.5*n*(n+1);
     }
 }
