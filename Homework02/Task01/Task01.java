@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 
-public class program {
+public class Task01 {
     static String[] sepor = {"name", "country", "city", "age"};
     static int size = 4;
 
