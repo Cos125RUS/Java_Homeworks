@@ -40,7 +40,7 @@ public class Task02 {
 
     static int[] sortArray(int[] arr) throws Exception{
         Logger logger = Logger.getLogger(Task02.class.getName());
-        FileHandler fhLogger = new FileHandler("log.txt");
+        FileHandler fhLogger = new FileHandler("Task02\\log.txt");
         logger.addHandler(fhLogger);
         SimpleFormatter txt = new SimpleFormatter();
         fhLogger.setFormatter(txt);

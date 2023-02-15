@@ -1,0 +1,4 @@
+февр. 15, 2023 6:22:08 PM Task04.Task04 operation
+WARNING: Input Error
+февр. 15, 2023 6:22:08 PM Task04.Task04 main
+INFO: 123546 = 0
