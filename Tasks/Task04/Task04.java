@@ -6,7 +6,9 @@ import java.util.logging.SimpleFormatter;
 
 public class Task04 {
     static StringBuilder sb = new StringBuilder();
-    public static void main(String[] args) throws Exception{
+    static int count = 0;
+
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         Logger logger = Logger.getLogger(Task04.class.getName());
         FileHandler fh = new FileHandler("log.txt");
@@ -17,20 +19,21 @@ public class Task04 {
 
         System.out.print("n = ");
         int n = scanner.nextInt();
-        hanoi(n,1,3,2);
+        hanoi(n, 1, 3, 2);
+        logger.info("n = " + n + ", move count = " + count);
         file.write(sb.toString());
         file.flush();
     }
 
     static void hanoi(int n, int departure, int target, int buffer) {
-        if (n == 1){
+        if (n == 1) {
             sb.append(departure).append(" -> ").append(target).append("\n");
             System.out.println(departure + " -> " + target);
-        }
-        else {
-            hanoi(n-1, departure, buffer, target);
+            count++;
+        } else {
+            hanoi(n - 1, departure, buffer, target);
             hanoi(1, departure, target, buffer);
-            hanoi(n-1, buffer, target, departure);
+            hanoi(n - 1, buffer, target, departure);
         }
     }
 }
