@@ -1,0 +1,2 @@
+февр. 17, 2023 11:09:32 AM Tasks.Task01 main
+INFO: 2^3 = 8
