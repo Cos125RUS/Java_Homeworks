@@ -45,4 +45,9 @@ public class Mathematic {
 
         return res;
     }
+
+    public static double degree(){
+
+        return 0;
+    }
 }
