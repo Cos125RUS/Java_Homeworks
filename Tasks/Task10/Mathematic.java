@@ -26,25 +26,38 @@ public class Mathematic {
 //        return items[items.length - 2];
 //    }
 
-    public static double result(double a, double b, String op){
-        double res = 0;
-        try {
-            if (op.equals("+"))
-                res =  a+b;
-            else if (op.equals("-"))
-                res =  a-b;
-            else if (op.equals("*"))
-                res =  a*b;
-            else if (op.equals("/"))
-                res =  a/b;
-            else if (op.equals("^"))
-                res = Math.pow(a,b);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static Object result(Object a, Object b, String op){
+        boolean isDouble;
+        if (((String)a).contains(".") || ((String)b).contains("."))
+            isDouble = true;
+        else isDouble = false;
 
-        return res;
+        if (op.equals("+")) {
+            if (isDouble)
+                return ((Object)(Double.parseDouble(((String) a)) + (Double.parseDouble(((String) b)))));
+            else return ((Object)(Integer.parseInt((String) a) + (Integer.parseInt((String) b))));
+        }
+        else if (op.equals("-")) {
+            if (isDouble)
+                return ((Object)(Double.parseDouble(((String) a)) - (Double.parseDouble(((String) b)))));
+            else return ((Object)(Integer.parseInt((String) a) - (Integer.parseInt((String) b))));
+        }
+        else if (op.equals("*")){
+            if (isDouble)
+                return ((Object)(Double.parseDouble(((String) a)) * (Double.parseDouble(((String) b)))));
+            else return ((Object)(Integer.parseInt((String) a) * (Integer.parseInt((String) b))));
+        }
+        else if (op.equals("/")){
+            if ((!isDouble) && ((Integer.parseInt((String) a) % (Integer.parseInt((String) b))) == 0))
+                return ((Object)(Integer.parseInt((String) a) / (Integer.parseInt((String) b))));
+            else return ((Object)(Double.parseDouble(((String) a)) / (Double.parseDouble(((String) b)))));
+        }
+        else if (op.equals("^")){
+            if (isDouble)
+                return ((Object) Math.pow((Double.parseDouble((String) a)),(Double.parseDouble((String) b))));
+            else return ((Object) Math.pow((Integer.parseInt((String) a)), (Integer.parseInt((String) b))));
+        }
+        else return ((Object)0);
     }
 
     public static double degree(){

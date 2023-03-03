@@ -47,14 +47,14 @@ public class Converter {
         return list;
     }
 
-    public static Map<Queue<Double>, Queue<String>> degree(String[] items) {
-        Map<Queue<Double>, Queue<String>> res = new HashMap<>();
-        Queue<Double> digits = new LinkedList<>();
+    public static Map<Queue<Object>, Queue<String>> degree(String[] items) {
+        Map<Queue<Object>, Queue<String>> res = new HashMap<>();
+        Queue<Object> digits = new LinkedList<>();
         Queue<String> operations = new LinkedList<>();
 
         for (String i : items)
             if (Character.isDigit(i.toCharArray()[0]))
-                digits.add(Double.parseDouble(i));
+                digits.add((Object)i);
             else
                 operations.add(i);
 
@@ -62,21 +62,21 @@ public class Converter {
         return res;
     }
 
-    public static void postfix(Map<Queue<Double>, Queue<String>> pier) {
-        Queue<Double> digits = null;
+    public static void postfix(Map<Queue<Object>, Queue<String>> pier) {
+        Queue<Object> digits = null;
         Queue<String> operations = null;
-        for (Map.Entry<Queue<Double>, Queue<String>> entry : pier.entrySet()) {
+        for (Map.Entry<Queue<Object>, Queue<String>> entry : pier.entrySet()) {
             digits = entry.getKey();
             operations = entry.getValue();
         }
         while (operations.size() > 0) {
-            double a = digits.poll();
-            double b = digits.poll();
+            Object a = digits.poll();
+            Object b = digits.poll();
             String op = operations.poll();
             digits.add(Mathematic.result(a, b, op));
-            System.out.println((((a - (int)a) == 0.0) ? (int)a : a) + " " +
-                    (((b - (int)b) == 0.0) ? (int)b : b) + " " + op);
+            System.out.println(a + " " + b + " " + op);
         }
-        System.out.println(digits.poll());
+        Object res = digits.poll();
+        System.out.println(res);
     }
 }
