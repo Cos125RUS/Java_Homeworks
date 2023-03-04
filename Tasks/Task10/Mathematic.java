@@ -28,37 +28,39 @@ public class Mathematic {
 
     public static Object result(Object a, Object b, String op){
         boolean isDouble;
-        if (((String)a).contains(".") || ((String)b).contains("."))
+        if (Converter.chekDouble(a) || Converter.chekDouble(b))
             isDouble = true;
         else isDouble = false;
 
         if (op.equals("+")) {
             if (isDouble)
-                return ((Object)(Double.parseDouble(((String) a)) + (Double.parseDouble(((String) b)))));
-            else return ((Object)(Integer.parseInt((String) a) + (Integer.parseInt((String) b))));
+                return ((Object)(Converter.toDouble(a) + Converter.toDouble(b)));
+            else return ((Object)((Converter.toInteger(a) + Converter.toInteger(b))));
         }
         else if (op.equals("-")) {
             if (isDouble)
-                return ((Object)(Double.parseDouble(((String) a)) - (Double.parseDouble(((String) b)))));
-            else return ((Object)(Integer.parseInt((String) a) - (Integer.parseInt((String) b))));
+                return ((Object)(Converter.toDouble(a) - Converter.toDouble(b)));
+            else return ((Object)((Converter.toInteger(a) - Converter.toInteger(b))));
         }
         else if (op.equals("*")){
             if (isDouble)
-                return ((Object)(Double.parseDouble(((String) a)) * (Double.parseDouble(((String) b)))));
-            else return ((Object)(Integer.parseInt((String) a) * (Integer.parseInt((String) b))));
+                return ((Object)(Converter.toDouble(a) * Converter.toDouble(b)));
+            else return ((Object)((Converter.toInteger(a) * Converter.toInteger(b))));
         }
         else if (op.equals("/")){
-            if ((!isDouble) && ((Integer.parseInt((String) a) % (Integer.parseInt((String) b))) == 0))
-                return ((Object)(Integer.parseInt((String) a) / (Integer.parseInt((String) b))));
-            else return ((Object)(Double.parseDouble(((String) a)) / (Double.parseDouble(((String) b)))));
+            if ((!isDouble) && ((Converter.toInteger(a) % Converter.toInteger(b)) == 0))
+                return ((Object)(Converter.toInteger(a) / Converter.toInteger(b)));
+            else return ((Object)(Converter.toDouble(a) / Converter.toDouble(b)));
         }
         else if (op.equals("^")){
             if (isDouble)
-                return ((Object) Math.pow((Double.parseDouble((String) a)),(Double.parseDouble((String) b))));
-            else return ((Object) Math.pow((Integer.parseInt((String) a)), (Integer.parseInt((String) b))));
+                return ((Object) Math.pow(Converter.toDouble(a),Converter.toDouble(b)));
+            else return ((Object) Math.pow(Converter.toInteger(a), Converter.toInteger(b)));
         }
         else return ((Object)0);
     }
+
+
 
     public static double degree(){
 

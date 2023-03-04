@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Map;
+import java.util.*;
 
 public class Converter {
     public static void convert(String[] items) {
@@ -47,9 +44,9 @@ public class Converter {
         return list;
     }
 
-    public static Map<Queue<Object>, Queue<String>> degree(String[] items) {
-        Map<Queue<Object>, Queue<String>> res = new HashMap<>();
-        Queue<Object> digits = new LinkedList<>();
+    public static Map<Deque<Object>, Queue<String>> degree(String[] items) {
+        Map<Deque<Object>, Queue<String>> res = new HashMap<>();
+        Deque<Object> digits = new ArrayDeque<>();
         Queue<String> operations = new LinkedList<>();
 
         for (String i : items)
@@ -62,10 +59,10 @@ public class Converter {
         return res;
     }
 
-    public static void postfix(Map<Queue<Object>, Queue<String>> pier) {
-        Queue<Object> digits = null;
+    public static void postfix(Map<Deque<Object>, Queue<String>> pier) {
+        Deque<Object> digits = null;
         Queue<String> operations = null;
-        for (Map.Entry<Queue<Object>, Queue<String>> entry : pier.entrySet()) {
+        for (Map.Entry<Deque<Object>, Queue<String>> entry : pier.entrySet()) {
             digits = entry.getKey();
             operations = entry.getValue();
         }
@@ -73,10 +70,46 @@ public class Converter {
             Object a = digits.poll();
             Object b = digits.poll();
             String op = operations.poll();
-            digits.add(Mathematic.result(a, b, op));
+            digits.addFirst(Mathematic.result(a, b, op));
             System.out.println(a + " " + b + " " + op);
         }
         Object res = digits.poll();
-        System.out.println(res);
+        if (chekInt(res))
+            System.out.println(toInteger(res));
+        else System.out.println("Result = " + res);
+    }
+
+    public static Double toDouble(Object n){
+        if (n instanceof String)
+            return (Double.parseDouble(((String) n)));
+        else if (n instanceof Integer)
+            return ((double)((Integer) n));
+        else return ((Double) n);
+    }
+
+    public static Integer toInteger(Object n){
+        if (n instanceof String)
+            return (Integer.parseInt(((String) n)));
+        else if (n instanceof Double)
+            return ((int)((double) n));
+        else return ((Integer) n);
+    }
+
+    public static boolean chekInt(Object n){
+        double numD = toDouble(n);
+        int numI = (int) numD;
+        if ((numD - numI) == 0)
+            return true;
+        else return false;
+    }
+
+    public static boolean chekDouble(Object n){
+        if (n instanceof String)
+            if (((String)n).contains("."))
+                return true;
+            else return false;
+        else if (n instanceof Double)
+            return true;
+        else return false;
     }
 }
