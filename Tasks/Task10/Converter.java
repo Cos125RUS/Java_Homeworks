@@ -1,53 +1,10 @@
 import java.util.*;
 
 public class Converter {
-    public static void convert(String[] items) {
-        String a = null;
-        for (int i = 1; i < items.length; i += 2) {
-            a = items[i];
-            items[i] = items[i + 1];
-            items[i + 1] = a;
-        }
-    }
-
-//    public static void convertToPostfix(String[] items) {
-//        for (int i = 0; i < items.length; i++) {
-//            if (items[i].equals("(")) {
-//                int len = 0;
-//                int j = i + 1;
-//                while (!items[j++].equals(")"))
-//                    len++;
-//                String[] newStr = new String[len];
-//                System.arraycopy(items, i + 1, newStr, 0, len);
-//                convertToPostfix(newStr);
-//                System.arraycopy(newStr, 0, items, i + 1, len);
-//                i += (len + 1);
-//            }
-//            else{
-//
-//            }
-//        }
-//    }
-
-    public static StringBuilder toSB(String[] items) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < items.length; i++) {
-            sb.append(items[i]);
-        }
-        return sb;
-    }
-
-    public static LinkedList<String> toList(String[] items) {
-        LinkedList<String> list = new LinkedList<>();
-        for (String i : items)
-            list.add(i);
-        return list;
-    }
-
-    public static Map<Deque<Object>, Queue<String>> degree(String[] items) {
-        Map<Deque<Object>, Queue<String>> res = new HashMap<>();
+    public static Map<Deque<Object>, Deque<String>> degree(String[] items) {
+        Map<Deque<Object>, Deque<String>> res = new HashMap<>();
         Deque<Object> digits = new ArrayDeque<>();
-        Queue<String> operations = new LinkedList<>();
+        Deque<String> operations = new LinkedList<>();
 
         for (String i : items)
             if (Character.isDigit(i.toCharArray()[0]))
@@ -59,23 +16,26 @@ public class Converter {
         return res;
     }
 
-    public static void postfix(Map<Deque<Object>, Queue<String>> pier) {
+    public static void postfix(Map<Deque<Object>, Deque<String>> pier) {
         Deque<Object> digits = null;
-        Queue<String> operations = null;
-        for (Map.Entry<Deque<Object>, Queue<String>> entry : pier.entrySet()) {
+        Deque<String> operations = null;
+        for (Map.Entry<Deque<Object>, Deque<String>> entry : pier.entrySet()) {
             digits = entry.getKey();
             operations = entry.getValue();
         }
+
+        Sorted.sort(digits,operations);
+        InOut.printPost(digits, operations);
+
         while (operations.size() > 0) {
             Object a = digits.poll();
             Object b = digits.poll();
             String op = operations.poll();
             digits.addFirst(Mathematic.result(a, b, op));
-            System.out.println(a + " " + b + " " + op);
         }
         Object res = digits.poll();
-        if (chekInt(res))
-            System.out.println(toInteger(res));
+        if (cheсkInt(res))
+            System.out.println("Result = " + toInteger(res));
         else System.out.println("Result = " + res);
     }
 
@@ -95,7 +55,7 @@ public class Converter {
         else return ((Integer) n);
     }
 
-    public static boolean chekInt(Object n){
+    public static boolean cheсkInt(Object n){
         double numD = toDouble(n);
         int numI = (int) numD;
         if ((numD - numI) == 0)
@@ -103,7 +63,7 @@ public class Converter {
         else return false;
     }
 
-    public static boolean chekDouble(Object n){
+    public static boolean cheсkDouble(Object n){
         if (n instanceof String)
             if (((String)n).contains("."))
                 return true;
