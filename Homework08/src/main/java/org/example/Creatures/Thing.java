@@ -20,30 +20,38 @@ public class Thing {
         this.name = name;
     }
 
-    public void run(int distance) {
-        if (distance > maxRunDistance)
+    public boolean run(int distance) {
+        if (distance > maxRunDistance) {
             System.out.println(type + " " + name + " не смог одолеть дистанцию.");
-        else System.out.println(type + " " + name + " пробежал дистанцию!");
+            return false;
+        }
+        else {
+            System.out.println(type + " " + name + " пробежал дистанцию!");
+            return true;
+        }
     }
 
-    public void jump(int height) {
-            if (height > maxJumpHeight)
-                System.out.println(type + " " +name + " не взял барьер.");
-            else System.out.println(type + " " +name  + " преодолел препятствие!");
+    public boolean jump(int height) {
+            if (height > maxJumpHeight) {
+                System.out.println(type + " " + name + " не взял барьер.");
+                return false;
+            }
+            else {
+                System.out.println(type + " " + name + " преодолел препятствие!");
+                return true;
+            }
     }
 
     public boolean doIt (Obstacles obstacles){
         if (obstacles instanceof Track) {
-            run(((Track) obstacles).getDistance());
-            if (((Track) obstacles).getDistance() > maxRunDistance)
-                return false;
-            else return true;
+            if (run(((Track) obstacles).getDistance()))
+                return true;
+            else return false;
         }
         else {
-            jump(((Wall) obstacles).getHeight());
-            if (((Wall) obstacles).getHeight() > maxJumpHeight)
-                return false;
-            else return true;
+            if (jump(((Wall) obstacles).getHeight()))
+                return true;
+            else return false;
         }
     }
 }
