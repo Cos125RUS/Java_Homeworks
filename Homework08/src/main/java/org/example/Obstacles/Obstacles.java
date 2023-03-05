@@ -1,5 +1,7 @@
 package org.example.Obstacles;
 
+import org.example.Creatures.Thing;
+
 import java.util.Random;
 
 public class Obstacles {
@@ -11,4 +13,8 @@ public class Obstacles {
         this.type = type;
         this.name = name;
     }
+
+    public boolean takeBarrier (Thing thing){
+        return false;
+    };
 }
