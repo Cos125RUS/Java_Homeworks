@@ -48,10 +48,11 @@ public class Calc {
     public Double binary(Object num){
         String line = num.toString();
         int n = 0;
-        for (int i = 0; i < line.length()-1; i++) {
+        for (int i = 0; i < line.length(); i++) {
             if (line.charAt(i) == '1')
-                n += (int) Math.pow(2.0,line.length()-1 - i);
+                n += (int) Math.pow(2.0,line.length() - 1 - i);
         }
+        res = (double) n;
         return res;
     }
 
