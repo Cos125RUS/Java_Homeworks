@@ -18,15 +18,17 @@ public class Main {
         System.out.println(calc3.sum(new ArrayList<>(Arrays.asList(1,2,3))));
 
         System.out.println();
-        calc3.add(6.8);
-        System.out.println(calc3.toBinary());
-        System.out.println(calc3.toBinary(7));
-        System.out.println(calc3.toBinary(7.0));
-        System.out.println(calc3.toBinary("7"));
-        System.out.println(calc3.toBinary("7.0"));
-
-        System.out.println();
         System.out.println(calc3.binary(1111));
         System.out.println(calc3.binary("1111"));
+
+        System.out.println();
+        calc3.add(6.8);
+        System.out.println(calc3.toBinary());
+        System.out.println(calc3.toBinary(7.5));
+        System.out.println(calc3.toBinary(7));
+        System.out.println(calc3.toBinary("7.5"));
+
+        System.out.println();
+        System.out.println(calc3.getRes());
     }
 }
