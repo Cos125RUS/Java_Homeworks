@@ -19,10 +19,14 @@ public class Main {
 
         System.out.println();
         calc3.add(6.8);
-        System.out.println(calc3.binary());
-        System.out.println(calc3.binary(7));
-        System.out.println(calc3.binary(7.0));
-        System.out.println(calc3.binary("7"));
-        System.out.println(calc3.binary("7.0"));
+        System.out.println(calc3.toBinary());
+        System.out.println(calc3.toBinary(7));
+        System.out.println(calc3.toBinary(7.0));
+        System.out.println(calc3.toBinary("7"));
+        System.out.println(calc3.toBinary("7.0"));
+
+        System.out.println();
+        System.out.println(calc3.binary(1111));
+        System.out.println(calc3.binary("1111"));
     }
 }

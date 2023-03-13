@@ -45,7 +45,17 @@ public class Calc {
         return res;
     }
 
-    public String binary(Double num){
+    public Double binary(Object num){
+        String line = num.toString();
+        int n = 0;
+        for (int i = 0; i < line.length()-1; i++) {
+            if (line.charAt(i) == '1')
+                n += (int) Math.pow(2.0,line.length()-1 - i);
+        }
+        return res;
+    }
+
+    public String toBinary(Double num){
         res = num;
         Integer n = num.intValue();
         StringBuilder sb = new StringBuilder();
@@ -57,7 +67,7 @@ public class Calc {
         return sb.reverse().toString();
     }
 
-    public String binary(String line){
+    public String toBinary(String line){
         int num;
         try {
             num = Integer.parseInt(line);
@@ -76,7 +86,7 @@ public class Calc {
         return sb.reverse().toString();
     }
 
-    public String binary(Integer num){
+    public String toBinary(Integer num){
         res = num.doubleValue();
         StringBuilder sb = new StringBuilder();
         while (num > 1) {
@@ -87,7 +97,7 @@ public class Calc {
         return sb.reverse().toString();
     }
 
-    public String binary(){
+    public String toBinary(){
         Integer n = res.intValue();
         StringBuilder sb = new StringBuilder();
         while (n > 1) {
