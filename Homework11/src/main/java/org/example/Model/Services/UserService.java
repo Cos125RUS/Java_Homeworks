@@ -54,25 +54,34 @@ public class UserService implements DataUserService, GroupDataService, Info {
 
     @Override
     public void showInfo(String info) {
-        System.out.println(info);
+        System.out.print(info);
     }
 
-    public void showMenu(int choice) {
+    public void showMenu(String choice) {
         switch (choice) {
-            case 1:
+            case "1":
                 showInfo(menu.choiceMember());
                 break;
-
-
-            case -1:
-                showInfo("Пока-пока");
+            case "2":
+                showInfo(menu.choiceGroup());
                 break;
-            default:
+            case "3":
+                showInfo(menu.choiceWhosMember());
+                break;
+            case "4":
+                showInfo(menu.choiceWhotsGroup());
+                break;
+
+            case "0":
                 showInfo(menu.mainMenu());
+                break;
+
+            default:
+                showInfo("Пока-пока");
         }
     }
 
-    public int userChoice() {
-        return enter.choice();
+    public String userEnter() {
+        return enter.enterString();
     }
 }

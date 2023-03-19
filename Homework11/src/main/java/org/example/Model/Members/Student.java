@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Student extends User{
     int groupId;
-    List<Integer> groups;
+    List<Integer> grades;
 
-    public Student(LocalDate dateBirth, String fio, int id) {
-        super(LocalDate.now(), "Ivanov I.O.", 23);
+    public Student(String dateBirth, String fio) {
+        super(dateBirth, fio);
     }
 
     public Student() {
-        super(LocalDate.now(), "Ivanov I.O.", 23);
+        super(LocalDate.now().toString(), "Ivanov I.O.", 23);
     }
 
 
@@ -20,5 +20,17 @@ public class Student extends User{
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
+    public List<Integer> getGroups() {
+        return grades;
     }
 }

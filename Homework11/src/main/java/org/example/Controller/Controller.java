@@ -1,32 +1,53 @@
 package org.example.Controller;
 
-import org.example.Model.Groups.Association;
+import org.example.Controller.AddMember.StudentAdder;
+import org.example.Controller.AddMember.TeacherAdder;
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
 import org.example.Model.Members.Teacher;
-import org.example.Model.Members.User;
-import org.example.Model.Services.Group.GroupService;
 import org.example.Model.Services.UserService;
-import org.example.View.Menu;
-import org.example.View.View;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Controller {
     public void start() {
         UserService us = new UserService();
-        us.showMenu(0);
-        int userChoice = 0;
-        while (userChoice != -1){
-            userChoice += us.userChoice();
-            us.showMenu(userChoice);
+        List<Student> students = new ArrayList<>();
+        List<Teacher> teachers = new ArrayList<>();
+        List<StudyGroup> studyGroups = new ArrayList<>();
+
+        String userChoice = "0";
+        us.showMenu(userChoice);
+        while (!userChoice.equals("-1")) {
+            switch (userChoice) {
+                case "1":
+                    userChoice = us.userEnter();
+                    switch (userChoice) {
+                        case "1":
+                            students.add(new StudentAdder(us).addStudent());
+                            break;
+                        case "2":
+                            teachers.add(new TeacherAdder(us).addTeacher());
+                            break;
+                        case "3":
+                            //Добавить зав.кафедрой
+                            break;
+                        case "4":
+                            //Добавить ректора
+                            break;
+                    }
+
+
+                    userChoice = "0";
+                    us.showMenu(userChoice);
+                    break;
+
+                case "0":
+                    userChoice = us.userEnter();
+                    us.showMenu(userChoice);
+            }
         }
-
-
-
 
 
 //        UserService userService = new UserService();
