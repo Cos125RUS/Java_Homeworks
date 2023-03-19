@@ -16,12 +16,6 @@ public class Student extends User{
     }
 
 
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     public int getGroupId() {
         return groupId;
     }
@@ -32,5 +26,14 @@ public class Student extends User{
 
     public List<Integer> getGroups() {
         return grades;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "dateBirth='" + dateBirth + '\'' +
+                ", fio='" + fio + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

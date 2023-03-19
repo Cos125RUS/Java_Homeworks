@@ -21,10 +21,6 @@ public class Teacher extends User{
         super(dateBirth, fio);
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 
     public int getExperience() {
         return experience;
@@ -32,5 +28,14 @@ public class Teacher extends User{
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "dateBirth='" + dateBirth + '\'' +
+                ", fio='" + fio + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

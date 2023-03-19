@@ -1,11 +1,11 @@
-package org.example.Controller.AddMember;
+package org.example.Model.Services.Adders.AddMember;
 
 import org.example.Model.Services.UserService;
 
-public abstract class UserAdder implements Adder{
+public abstract class UserAdderMembers implements AdderMembers {
     UserService us;
 
-    public UserAdder(UserService userService) {
+    public UserAdderMembers(UserService userService) {
         this.us = userService;
     }
 

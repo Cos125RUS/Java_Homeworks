@@ -1,10 +1,10 @@
-package org.example.Controller.AddMember;
+package org.example.Model.Services.Adders.AddMember;
 
 import org.example.Model.Members.Teacher;
 import org.example.Model.Services.UserService;
 
-public class TeacherAdder extends UserAdder {
-    public TeacherAdder(UserService userService) {
+public class TeacherAdderMembers extends UserAdderMembers {
+    public TeacherAdderMembers(UserService userService) {
         super(userService);
     }
 
