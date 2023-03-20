@@ -8,28 +8,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StudyGroup extends Association<Student>{
-    Teacher teacher;
-    static int idCount = 0;
+public class StudyGroup extends Group<Teacher, Student>{
+    int groupId;
 
-    public StudyGroup() {
-        idCount++;
-        super.groupId = idCount;
+    public StudyGroup(Teacher teacher, List<Student> students, int groupId) {
+        super(teacher, students);
+        this.groupId = groupId;
     }
 
-    public StudyGroup(Teacher teacher, List<Student> students) {
-        this();
-        this.teacher = teacher;
-        super.users = students;
-    }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public Map<Teacher, List<Student>> getGroup() {
-        Map<Teacher, List<Student>> group = new HashMap<>();
-        group.put(teacher, users);
-        return group;
-    }
+//    public Map<Teacher, List<Student>> getGroup() {
+//        Map<Teacher, List<Student>> group = new HashMap<>();
+//        group.put(teacher, users);
+//        return group;
+//    }
 }

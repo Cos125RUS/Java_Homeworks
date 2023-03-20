@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Model.Services.Adders.AddGroup.AdderStudyGroup;
 import org.example.Model.Services.Adders.AddMember.StudentAdderMembers;
 import org.example.Model.Services.Adders.AddMember.TeacherAdderMembers;
 import org.example.Model.Groups.StudyGroup;
@@ -41,6 +42,8 @@ public class Controller {
                             us.showInfo("Указано неправильное значение");
                             break;
                     }
+                    us.showInfo("Жмякни Enter, чтобы выйти в меню");
+                    us.userEnter();
                     userChoice = "0";
                     us.showMenu(userChoice);
                     break;
@@ -48,8 +51,22 @@ public class Controller {
                 case "2":
                     userChoice = us.userEnter();
                     switch (userChoice) {
-
+                        case "1":
+                            studyGroups.add(new AdderStudyGroup(us, teachers, students).newGroup());
+                            us.showInfo("\nУчебная группа создана!\n");
+                            break;
+                        case "2":
+                            us.showInfo("Функционал 'Кафедра' не реализован");
+                            break;
+                        case "3":
+                            us.showInfo("Функционал 'Институт' не реализован");
+                            break;
+                        default:
+                            us.showInfo("Указано неправильное значение");
+                            break;
                     }
+                    us.showInfo("Жмякни Enter, чтобы выйти в меню");
+                    us.userEnter();
                     userChoice = "0";
                     us.showMenu(userChoice);
                     break;
@@ -73,6 +90,8 @@ public class Controller {
                             us.showInfo("Указано неправильное значение");
                             break;
                     }
+                    us.showInfo("Жмякни Enter, чтобы выйти в меню");
+                    us.userEnter();
                     userChoice = "0";
                     us.showMenu(userChoice);
                     break;

@@ -13,8 +13,8 @@ public class GetterMembersList<T> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (T user:users)
-            sb.append(user.toString()).append("\n");
+        for (int i = 0; i < users.size(); i++)
+            sb.append(i + 1).append(". ").append(users.get(i).toString()).append("\n");
         return sb.toString();
     }
 }

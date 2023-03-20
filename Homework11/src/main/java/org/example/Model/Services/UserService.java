@@ -1,10 +1,12 @@
 package org.example.Model.Services;
 
-import org.example.Model.Groups.Association;
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
 import org.example.Model.Members.Teacher;
 import org.example.Model.Members.User;
+import org.example.Model.Services.Impl.DataUserService;
+import org.example.Model.Services.Impl.GroupDataService;
+import org.example.Model.Services.Impl.Info;
 import org.example.View.In;
 import org.example.View.Menu;
 import org.example.View.View;
@@ -37,19 +39,23 @@ public class UserService implements DataUserService, GroupDataService, Info {
         return users;
     }
 
+//    @Override
+//    public Association create(StudyGroup studyGroup) {
+//        return new StudyGroup();
+//    }
+//
+//    @Override
+//    public Association readGroup(Association group) {
+//        return group;
+//    }
+//
+//    @Override
+//    public Association readGroup(StudyGroup group) {
+//        return group;
+//    }
     @Override
-    public Association create(StudyGroup studyGroup) {
-        return new StudyGroup();
-    }
-
-    @Override
-    public Association readGroup(Association group) {
-        return group;
-    }
-
-    @Override
-    public Association readGroup(StudyGroup group) {
-        return group;
+    public StudyGroup create() {
+        return null;
     }
 
     @Override
@@ -84,4 +90,5 @@ public class UserService implements DataUserService, GroupDataService, Info {
     public String userEnter() {
         return enter.enterString();
     }
+
 }

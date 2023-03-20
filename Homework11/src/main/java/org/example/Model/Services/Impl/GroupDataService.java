@@ -1,6 +1,6 @@
-package org.example.Model.Services;
+package org.example.Model.Services.Impl;
 
-import org.example.Model.Groups.Association;
+import org.example.Model.Groups.Group;
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
 import org.example.Model.Members.Teacher;
@@ -11,10 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface GroupDataService {
-    View view = new View();
 
-    Association create(StudyGroup studyGroup);
+    StudyGroup create();
 
-    Association readGroup(Association group);
-    Association readGroup(StudyGroup group);
 }
