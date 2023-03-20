@@ -1,8 +1,5 @@
 package org.example.Controller;
 
-import org.example.Model.Services.Adders.AddGroup.AdderStudyGroup;
-import org.example.Model.Services.Adders.AddMember.StudentAdderMembers;
-import org.example.Model.Services.Adders.AddMember.TeacherAdderMembers;
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
 import org.example.Model.Members.Teacher;
@@ -28,10 +25,10 @@ public class Controller {
                     userChoice = us.userEnter();
                     switch (userChoice) {
                         case "1":
-                            students.add(new StudentAdderMembers(us).addStudent());
+                            students.add(us.createStudent());
                             break;
                         case "2":
-                            teachers.add(new TeacherAdderMembers(us).addTeacher());
+                            teachers.add(us.createTeacher());
                             break;
                         case "3":
                             us.showInfo("Функционал 'Зав.кафедрой' не реализован");
@@ -53,7 +50,7 @@ public class Controller {
                     userChoice = us.userEnter();
                     switch (userChoice) {
                         case "1":
-                            studyGroups.add(new AdderStudyGroup(us, teachers, students).newGroup());
+                            studyGroups.add(us.createGroup(teachers, students));
                             us.showInfo("\nУчебная группа создана!\n");
                             break;
                         case "2":
@@ -76,10 +73,10 @@ public class Controller {
                     userChoice = us.userEnter();
                     switch (userChoice) {
                         case "1":
-                            us.showInfo(new GetterMembersList<Student>(students).toString());
+                            us.showInfo(us.getStudentsList(students));
                             break;
                         case "2":
-                            us.showInfo(new GetterMembersList<Teacher>(teachers).toString());
+                            us.showInfo(us.getTeachersList(teachers));
                             break;
                         case "3":
                             us.showInfo("Функционал 'Зав.кафедрой' не реализован");
@@ -101,14 +98,7 @@ public class Controller {
                     userChoice = us.userEnter();
                     switch (userChoice) {
                         case "1":
-                            try {
-                            us.showInfo(new GetterMembersList<StudyGroup>(studyGroups).toString());
-                            us.showInfo(new GetterGroupList<StudyGroup>(studyGroups)
-                                    .showGroupList(Integer.parseInt(us.userEnter()) - 1));
-                            }
-                            catch (Exception e){
-                                us.showInfo("Ошибка ввода значений");
-                            }
+                            us.getStudyGroupsList(studyGroups);
                             break;
                         case "2":
                             us.showInfo("Функционал 'Кафедра' не реализован");
