@@ -6,6 +6,7 @@ import org.example.Model.Services.Adders.AddMember.TeacherAdderMembers;
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
 import org.example.Model.Members.Teacher;
+import org.example.Model.Services.Getters.GetterGroupList;
 import org.example.Model.Services.Getters.GetterMembersList;
 import org.example.Model.Services.UserService;
 
@@ -96,6 +97,34 @@ public class Controller {
                     us.showMenu(userChoice);
                     break;
 
+                case "4":
+                    userChoice = us.userEnter();
+                    switch (userChoice) {
+                        case "1":
+                            try {
+                            us.showInfo(new GetterMembersList<StudyGroup>(studyGroups).toString());
+                            us.showInfo(new GetterGroupList<StudyGroup>(studyGroups)
+                                    .showGroupList(Integer.parseInt(us.userEnter()) - 1));
+                            }
+                            catch (Exception e){
+                                us.showInfo("Ошибка ввода значений");
+                            }
+                            break;
+                        case "2":
+                            us.showInfo("Функционал 'Кафедра' не реализован");
+                            break;
+                        case "3":
+                            us.showInfo("Функционал 'Институт' не реализован");
+                            break;
+                        default:
+                            us.showInfo("Указано неправильное значение");
+                            break;
+                    }
+                    us.showInfo("Жмякни Enter, чтобы выйти в меню");
+                    us.userEnter();
+                    userChoice = "0";
+                    us.showMenu(userChoice);
+                    break;
 
                 case "0":
                     userChoice = us.userEnter();

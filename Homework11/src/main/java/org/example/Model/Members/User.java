@@ -35,5 +35,9 @@ public abstract class User {
                 '}';
     }
 
+    public String getFio() {
+        return fio;
+    }
+
     //    LocalDate vacation;
 }

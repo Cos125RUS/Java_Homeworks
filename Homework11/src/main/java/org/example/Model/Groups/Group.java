@@ -11,4 +11,12 @@ public abstract class Group<U1, U2>{
         this.leader = leader;
         this.members = members;
     }
+
+    public U1 getLeader() {
+        return leader;
+    }
+
+    public List<U2> getMembers() {
+        return members;
+    }
 }

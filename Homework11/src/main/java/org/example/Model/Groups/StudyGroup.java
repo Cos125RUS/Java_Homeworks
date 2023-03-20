@@ -17,9 +17,16 @@ public class StudyGroup extends Group<Teacher, Student>{
     }
 
 
-//    public Map<Teacher, List<Student>> getGroup() {
-//        Map<Teacher, List<Student>> group = new HashMap<>();
-//        group.put(teacher, users);
-//        return group;
-//    }
+    @Override
+    public String toString() {
+        return "StudyGroup{" +
+                "groupId=" + groupId +
+                ", leader=" + leader.getFio() +
+                ", members=" + members.size() +
+                '}';
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
 }
