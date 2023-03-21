@@ -11,21 +11,29 @@ import org.example.Model.Services.Getters.GetterMembersList;
 import org.example.Model.Services.ImplService.DataCreatorService;
 import org.example.Model.Services.ImplService.DataReaderService;
 import org.example.Model.Services.ImplService.Info;
-import org.example.View.In;
-import org.example.View.Menu;
+import org.example.View.ConsoleView;
+import org.example.View.In.In;
+import org.example.View.Menu.GetMenu;
 import org.example.View.View;
 
 import java.util.List;
 
+/**
+ * Модуль предоставления сервисов
+ * Реализован список разделения интерфейсов,
+ * Один класс имплементирует три различных интерфейса
+ */
 public class UserService implements DataCreatorService, DataReaderService, Info {
-    View view;
-    Menu menu;
+    GetMenu menu;
+    ConsoleView view;
+    GetMenu getMenu;
     In enter;
 
     public UserService() {
-        view = new View();
-        menu = new Menu();
-        enter = new In();
+        this.menu = new GetMenu();
+        this.view = new ConsoleView();
+        this.getMenu = new GetMenu();
+        this.enter = new In();
     }
 
     @Override
@@ -38,36 +46,33 @@ public class UserService implements DataCreatorService, DataReaderService, Info 
         return new TeacherAdderMembers(this).addTeacher();
     }
 
-
-
-
     @Override
     public void showInfo(String info) {
-        ConsoleView.show(info);
+        view.show(info);
     }
 
     @Override
     public void showMenu(String choice) {
         switch (choice) {
             case "1":
-                ConsoleView.show(menu.choiceMember());
+                view.show(menu.getChoiceMember());
                 break;
             case "2":
-                ConsoleView.show(menu.choiceGroup());
+                view.show(menu.getChoiceGroup());
                 break;
             case "3":
-                ConsoleView.show(menu.choiceWhoseMember());
+                view.show(menu.getChoiceWhoseMember());
                 break;
             case "4":
-                ConsoleView.show(menu.choiceWhatsGroup());
+                view.show(menu.getChoiceWhatsGroup());
                 break;
 
             case "0":
-                ConsoleView.show(menu.mainMenu());
+                view.show(menu.getMainMenu());
                 break;
 
             default:
-                ConsoleView.show("Пока-пока");
+                view.show("Пока-пока");
         }
     }
 

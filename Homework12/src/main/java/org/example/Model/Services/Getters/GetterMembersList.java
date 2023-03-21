@@ -2,6 +2,12 @@ package org.example.Model.Services.Getters;
 
 import java.util.List;
 
+/**
+ * Класс просмотра списка юзеров
+ * @param <T> тип юзеров
+ * Реализован принцип единственной ответственности:
+ * Класс отвечает лишь за просмотр информации о пользователях
+ */
 public class GetterMembersList<T> {
     List<T> users;
 

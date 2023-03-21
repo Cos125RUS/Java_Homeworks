@@ -4,6 +4,12 @@ import org.example.Model.Groups.Group;
 
 import java.util.List;
 
+/**
+ * Класс просмотра списка групп
+ * @param <U> тип группы
+ *     Реализован принцип единственной ответственности:
+ *  Класс отвечает лишь за просмотр информации о пользователях
+ */
 public class GetterGroupList<U extends Group> implements GetterGroupImpl{
     List<U> groups;
 

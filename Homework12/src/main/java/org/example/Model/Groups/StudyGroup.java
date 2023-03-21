@@ -8,6 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс, отвечающий за создагте учебных групп.
+ * Реализован принцип подстановки Барбары Лисков
+ */
 public class StudyGroup extends Group<Teacher, Student>{
     int groupId;
 

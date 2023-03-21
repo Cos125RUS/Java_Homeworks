@@ -9,6 +9,10 @@ import org.example.Model.Services.UserService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Метод отвечает за создание непосредственно студенческих групп.
+ * Реализован принцип подстановки Барбары Лисков
+ */
 public class AdderStudyGroup extends AdderGroup implements AdderGroupImpl<Teacher, Student, StudyGroup> {
     List<Teacher> teachers;
     List<Student> students;

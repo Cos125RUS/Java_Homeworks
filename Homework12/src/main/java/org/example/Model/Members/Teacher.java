@@ -5,6 +5,10 @@ import org.example.Model.Groups.StudyGroup;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Класс Учитель дополнен опытом и сипском групп, у которых преподаватель преподаёт
+ * Реализован принцип подстановки Барбары Лисков
+ */
 public class Teacher extends User{
     int experience;
     List<Integer> groupsId;

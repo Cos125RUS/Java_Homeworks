@@ -6,6 +6,9 @@ import org.example.Model.Members.Teacher;
 
 import java.util.List;
 
+/**
+ * Сервисный интерфейс для создания
+ */
 public interface DataCreatorService {
 
     Student createStudent();

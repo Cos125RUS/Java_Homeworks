@@ -8,6 +8,9 @@ import org.example.Model.Services.UserService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Модуль контроля вызовов
+ */
 public class Controller implements ControllerImpl{
     UserService us;
     List<Student> students;
@@ -50,8 +53,10 @@ public class Controller implements ControllerImpl{
                 case "0":
                     userChoice = us.userEnter();
                     us.showMenu(userChoice);
+                    break;
 
                 default:
+                    userChoice = "0";
                     us.showInfo("Указано неправильное значение");
                     break;
             }
@@ -74,7 +79,7 @@ public class Controller implements ControllerImpl{
                 us.showInfo("Функционал 'Ректор' не реализован");
                 break;
             default:
-                us.showInfo("Указано неправильное значение");
+                us.showInfo("Указано неправьное значение");
                 break;
         }
     }

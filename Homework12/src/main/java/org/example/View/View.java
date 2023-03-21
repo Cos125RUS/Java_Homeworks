@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Класс безнадёжгл устарел, так что был полностью заменён наследником в лице ConsoleView.
+ */
 public class View {
+
     StringBuilder sb = new StringBuilder();
 
     public String studentView(List<User> students){

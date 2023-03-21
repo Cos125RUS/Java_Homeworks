@@ -6,6 +6,9 @@ import org.example.Model.Members.Teacher;
 
 import java.util.List;
 
+/**
+ * Сервисный интерфейс для считывания информации
+ */
 public interface DataReaderService {
 
     String getStudentsList(List<Student> students);

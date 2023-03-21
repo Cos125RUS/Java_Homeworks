@@ -1,10 +1,19 @@
-package org.example.View;
+package org.example.View.Menu;
 
-public class Menu implements MenuImpl{
-    StringBuilder sb = new StringBuilder();
+/**
+ * Класс ответственный за генерацию меню
+ * Реализован принцип единственной ответственности:
+ * Класс генерации отделён от класса, отвечающего за предоставление меню
+ */
+public class Menu implements AddMenuImpl{
+    StringBuilder sb;
+
+    public Menu() {
+        this.sb = new StringBuilder();
+    }
 
     @Override
-    public String mainMenu() {
+    public String addMainMenu() {
         sb.setLength(0);
         sb.append("Главное меню:\n");
         sb.append("1.Добавить мембера\n");
@@ -16,7 +25,7 @@ public class Menu implements MenuImpl{
     }
 
     @Override
-    public String choiceMember() {
+    public String addChoiceMember() {
         sb.setLength(0);
         sb.append("Выбор нового пользователя:\n");
         sb.append("1.Добавить студента\n");
@@ -28,7 +37,7 @@ public class Menu implements MenuImpl{
     }
 
     @Override
-    public String choiceGroup() {
+    public String addChoiceGroup() {
         sb.setLength(0);
         sb.append("Выбор Группы:\n");
         sb.append("1.Добавить учебную группу\n");
@@ -39,7 +48,7 @@ public class Menu implements MenuImpl{
     }
 
     @Override
-    public String choiceWhoseMember() {
+    public String addChoiceWhoseMember() {
         sb.setLength(0);
         sb.append("Какую группу смотрим:\n");
         sb.append("1.Учащиеся\n");
@@ -51,7 +60,7 @@ public class Menu implements MenuImpl{
     }
 
     @Override
-    public String choiceWhatsGroup() {
+    public String addChoiceWhatsGroup() {
         sb.setLength(0);
         sb.append("Выбор Группы:\n");
         sb.append("1.Группа учащихся\n");
@@ -60,5 +69,4 @@ public class Menu implements MenuImpl{
         sb.append("0.Выйти\n\n");
         return sb.toString();
     }
-
 }

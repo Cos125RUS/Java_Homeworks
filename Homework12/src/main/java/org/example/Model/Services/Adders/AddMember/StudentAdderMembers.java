@@ -3,6 +3,12 @@ package org.example.Model.Services.Adders.AddMember;
 import org.example.Model.Members.Student;
 import org.example.Model.Services.UserService;
 
+/**
+ * Класс добавления студентов
+ * Реализован принцип подстановки Барбары Лисков
+ * Реализован принцип инверсии зависимостей:
+ * Имплементация интерфейса в верхнеуровневый класс.
+ */
 public class StudentAdderMembers extends UserAdderMembers implements StudentsAdderImpl{
     public StudentAdderMembers(UserService userService) {
         super(userService);

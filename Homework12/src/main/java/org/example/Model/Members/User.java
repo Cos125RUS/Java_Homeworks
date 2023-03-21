@@ -2,6 +2,9 @@ package org.example.Model.Members;
 
 import java.time.LocalDate;
 
+/**
+ * Абстрактный класс юзеров, хранящий в себе дату рождения, ФИО и id.
+ */
 public abstract class User {
     String dateBirth;
     String fio;

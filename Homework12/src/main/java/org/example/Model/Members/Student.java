@@ -3,6 +3,10 @@ package org.example.Model.Members;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Класс Студентов дополнен информацией об ID группы и оценках учащегося
+ * Реализован принцип подстановки Барбары Лисков
+ */
 public class Student extends User{
     int groupId;
     List<Integer> grades;
