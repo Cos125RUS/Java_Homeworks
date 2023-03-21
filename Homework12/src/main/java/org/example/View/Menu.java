@@ -1,8 +1,9 @@
 package org.example.View;
 
-public class Menu {
+public class Menu implements MenuImpl{
     StringBuilder sb = new StringBuilder();
 
+    @Override
     public String mainMenu() {
         sb.setLength(0);
         sb.append("Главное меню:\n");
@@ -14,6 +15,7 @@ public class Menu {
         return sb.toString();
     }
 
+    @Override
     public String choiceMember() {
         sb.setLength(0);
         sb.append("Выбор нового пользователя:\n");
@@ -25,6 +27,7 @@ public class Menu {
         return sb.toString();
     }
 
+    @Override
     public String choiceGroup() {
         sb.setLength(0);
         sb.append("Выбор Группы:\n");
@@ -35,7 +38,8 @@ public class Menu {
         return sb.toString();
     }
 
-    public String choiceWhosMember() {
+    @Override
+    public String choiceWhoseMember() {
         sb.setLength(0);
         sb.append("Какую группу смотрим:\n");
         sb.append("1.Учащиеся\n");
@@ -46,7 +50,8 @@ public class Menu {
         return sb.toString();
     }
 
-    public String choiceWhotsGroup() {
+    @Override
+    public String choiceWhatsGroup() {
         sb.setLength(0);
         sb.append("Выбор Группы:\n");
         sb.append("1.Группа учащихся\n");

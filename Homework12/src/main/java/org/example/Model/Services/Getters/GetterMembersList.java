@@ -5,7 +5,6 @@ import java.util.List;
 public class GetterMembersList<T> {
     List<T> users;
 
-
     public GetterMembersList(List<T> users) {
         this.users = users;
     }

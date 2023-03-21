@@ -3,11 +3,12 @@ package org.example.Model.Services.Adders.AddMember;
 import org.example.Model.Members.Student;
 import org.example.Model.Services.UserService;
 
-public class StudentAdderMembers extends UserAdderMembers {
+public class StudentAdderMembers extends UserAdderMembers implements StudentsAdderImpl{
     public StudentAdderMembers(UserService userService) {
         super(userService);
     }
 
+    @Override
     public Student addStudent() {
         Student student = new Student(date(), fio());
         us.showInfo("\nГруппа: ");

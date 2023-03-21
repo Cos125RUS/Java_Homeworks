@@ -1,4 +1,4 @@
-package org.example.Model.Services.Impl;
+package org.example.Model.Services.ImplService;
 
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;

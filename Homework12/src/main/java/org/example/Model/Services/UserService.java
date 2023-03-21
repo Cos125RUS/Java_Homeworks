@@ -8,9 +8,9 @@ import org.example.Model.Services.Adders.AddMember.StudentAdderMembers;
 import org.example.Model.Services.Adders.AddMember.TeacherAdderMembers;
 import org.example.Model.Services.Getters.GetterGroupList;
 import org.example.Model.Services.Getters.GetterMembersList;
-import org.example.Model.Services.Impl.DataCreatorService;
-import org.example.Model.Services.Impl.DataReaderService;
-import org.example.Model.Services.Impl.Info;
+import org.example.Model.Services.ImplService.DataCreatorService;
+import org.example.Model.Services.ImplService.DataReaderService;
+import org.example.Model.Services.ImplService.Info;
 import org.example.View.In;
 import org.example.View.Menu;
 import org.example.View.View;
@@ -46,6 +46,7 @@ public class UserService implements DataCreatorService, DataReaderService, Info 
         ConsoleView.show(info);
     }
 
+    @Override
     public void showMenu(String choice) {
         switch (choice) {
             case "1":
@@ -55,10 +56,10 @@ public class UserService implements DataCreatorService, DataReaderService, Info 
                 ConsoleView.show(menu.choiceGroup());
                 break;
             case "3":
-                ConsoleView.show(menu.choiceWhosMember());
+                ConsoleView.show(menu.choiceWhoseMember());
                 break;
             case "4":
-                ConsoleView.show(menu.choiceWhotsGroup());
+                ConsoleView.show(menu.choiceWhatsGroup());
                 break;
 
             case "0":
@@ -70,6 +71,7 @@ public class UserService implements DataCreatorService, DataReaderService, Info 
         }
     }
 
+    @Override
     public String userEnter() {
         return enter.enterString();
     }
