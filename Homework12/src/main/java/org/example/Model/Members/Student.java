@@ -15,6 +15,12 @@ public class Student extends User{
         super(fio,dateBirth);
     }
 
+    public Student(int id, String fio, String dateBirth, int groupId) {
+        super(fio, dateBirth);
+        this.groupId = groupId;
+        super.id = id;
+    }
+
     public int getGroupId() {
         return groupId;
     }
