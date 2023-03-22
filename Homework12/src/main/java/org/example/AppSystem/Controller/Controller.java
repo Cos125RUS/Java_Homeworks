@@ -1,10 +1,9 @@
-package org.example.Controller;
+package org.example.AppSystem.Controller;
 
 import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
 import org.example.Model.Members.Teacher;
 import org.example.Model.Services.UserService;
-
 import java.util.ArrayList;
 import java.util.List;
 

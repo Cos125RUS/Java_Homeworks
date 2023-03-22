@@ -42,7 +42,7 @@ public class AdderStudyGroup extends AdderGroup implements AdderGroupImpl<Teache
     }
 
     @Override
-    public List<Student> members() {
+    public List<Student> members(int groupName) {
         us.showInfo("\nДобавление студентов: ");
         us.showInfo(new GetterMembersList<Student>(students).toString());
         List<Student> selectStudents = new ArrayList<>();
@@ -52,6 +52,7 @@ public class AdderStudyGroup extends AdderGroup implements AdderGroupImpl<Teache
             String[] membersId = choiceMembers.split(" ");
             for (String s : membersId) {
                 selectStudents.add(students.get(Integer.parseInt(s) - 1));
+                students.get(Integer.parseInt(s) - 1).setGroupId(groupName);
             }
             return selectStudents;
         } catch (Exception e) {
@@ -62,6 +63,7 @@ public class AdderStudyGroup extends AdderGroup implements AdderGroupImpl<Teache
 
     @Override
     public StudyGroup newGroup() {
-        return new StudyGroup(leader(), members(),Integer.parseInt(name()));
+        int groupName = Integer.parseInt(name());
+        return new StudyGroup(leader(), members(groupName),groupName);
     }
 }

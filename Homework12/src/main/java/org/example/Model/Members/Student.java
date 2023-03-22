@@ -15,11 +15,6 @@ public class Student extends User{
         super(fio,dateBirth);
     }
 
-    public Student() {
-        super("Ivanov I.O.",LocalDate.now().toString(), 23);
-    }
-
-
     public int getGroupId() {
         return groupId;
     }
@@ -34,10 +29,9 @@ public class Student extends User{
 
     @Override
     public String toString() {
-        return "Student{" +
-                ", fio='" + fio + '\'' +
-                "dateBirth='" + dateBirth + '\'' +
-                ", id=" + id +
-                '}';
+        return "(Студент id=" + id +
+                ") ФИО:'" + fio + '\'' +
+                ", " + dateBirth +
+                ", Учебная группа №" + groupId;
     }
 }

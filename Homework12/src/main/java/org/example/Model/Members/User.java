@@ -1,30 +1,21 @@
 package org.example.Model.Members;
 
+import org.example.Model.Members.Fields.AdderDate;
+import org.example.Model.Members.Fields.Birthday;
+
 import java.time.LocalDate;
 
 /**
  * Абстрактный класс юзеров, хранящий в себе дату рождения, ФИО и id.
  */
 public abstract class User {
-    String dateBirth;
+    Birthday dateBirth;
     String fio;
     int id;
     static int count = 0;
 
-    public User(String fio,String dateBirth, int id) {
-        this.dateBirth = dateBirth;
-        this.fio = fio;
-        this.id = id;
-    }
-
-    public User() {
-        this.dateBirth = LocalDate.now().toString();
-        this.fio = "Ivanov I.O.";
-        this.id = 23;
-    }
-
-    public User(String fio,String dateBirth) {
-        this.dateBirth = dateBirth;
+    public User(String fio, String dateBirth) {
+        this.dateBirth = new AdderDate(dateBirth).addDate();
         this.fio = fio;
         this.id = ++count;
     }
@@ -41,6 +32,4 @@ public abstract class User {
     public String getFio() {
         return fio;
     }
-
-    //    LocalDate vacation;
 }

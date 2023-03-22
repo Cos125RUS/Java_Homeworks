@@ -1,4 +1,4 @@
-package org.example.Controller;
+package org.example.AppSystem.Controller;
 
 /**
  * Интерфейс контроллера с методом Start

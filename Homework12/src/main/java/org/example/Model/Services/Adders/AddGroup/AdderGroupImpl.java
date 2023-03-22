@@ -15,6 +15,6 @@ import java.util.List;
 public interface AdderGroupImpl<U1 extends User, U2 extends User, U3 extends Group> {
     String name();
     U1 leader();
-    List<U2> members();
+    List<U2> members(int groupName);
     U3 newGroup();
 }

@@ -10,6 +10,7 @@ public class Validity implements DateValidityImpl {
 
     @Override
     public boolean dateCheck(String value) {
+        if (value.length() < 10) return false;
         if (value.charAt(2) != '.' || value.charAt(5) != '.')
             return false;
         String[] breakdown = value.replace(".", ". ").split(". ");
@@ -20,8 +21,6 @@ public class Validity implements DateValidityImpl {
         } catch (Exception e) {
             return false;
         }
-
-
         return checkDayMonthYear(nums[0], nums[1], nums[2]);
     }
 
