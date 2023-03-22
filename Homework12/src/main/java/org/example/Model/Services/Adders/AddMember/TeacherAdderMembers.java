@@ -16,7 +16,7 @@ public class TeacherAdderMembers extends UserAdderMembers implements TeachersAdd
 
     @Override
     public Teacher addTeacher(){
-        Teacher teacher = new Teacher(date(), fio());
+        Teacher teacher = new Teacher(fio(),date());
         us.showInfo("\nОпыт: ");
         String enterExp = us.userEnter();
         int exp;

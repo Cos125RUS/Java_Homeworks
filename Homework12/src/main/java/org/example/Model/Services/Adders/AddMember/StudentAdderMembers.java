@@ -16,7 +16,7 @@ public class StudentAdderMembers extends UserAdderMembers implements StudentsAdd
 
     @Override
     public Student addStudent() {
-        Student student = new Student(date(), fio());
+        Student student = new Student(fio(),date());
         us.showInfo("\nГруппа: ");
         String enterGroup = us.userEnter();
         int groupId;

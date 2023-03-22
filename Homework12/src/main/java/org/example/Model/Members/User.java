@@ -11,7 +11,7 @@ public abstract class User {
     int id;
     static int count = 0;
 
-    public User(String dateBirth, String fio, int id) {
+    public User(String fio,String dateBirth, int id) {
         this.dateBirth = dateBirth;
         this.fio = fio;
         this.id = id;
@@ -23,7 +23,7 @@ public abstract class User {
         this.id = 23;
     }
 
-    public User(String dateBirth, String fio) {
+    public User(String fio,String dateBirth) {
         this.dateBirth = dateBirth;
         this.fio = fio;
         this.id = ++count;
@@ -32,8 +32,8 @@ public abstract class User {
     @Override
     public String toString() {
         return "User{" +
-                "dateBirth=" + dateBirth +
                 ", fio='" + fio + '\'' +
+                "dateBirth=" + dateBirth +
                 ", id=" + id +
                 '}';
     }

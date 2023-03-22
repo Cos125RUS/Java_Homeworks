@@ -15,6 +15,12 @@ import java.util.Map;
 public class StudyGroup extends Group<Teacher, Student>{
     int groupId;
 
+    /**
+     * Создать учебную группу
+     * @param teacher руководитель группы
+     * @param students список учащихся группы
+     * @param groupId номер группы
+     */
     public StudyGroup(Teacher teacher, List<Student> students, int groupId) {
         super(teacher, students);
         this.groupId = groupId;
@@ -30,6 +36,9 @@ public class StudyGroup extends Group<Teacher, Student>{
                 '}';
     }
 
+    /**
+     * @return номер группы
+     */
     public int getGroupId() {
         return groupId;
     }

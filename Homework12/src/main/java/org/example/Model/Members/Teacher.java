@@ -13,16 +13,16 @@ public class Teacher extends User{
     int experience;
     List<Integer> groupsId;
 
-    public Teacher(LocalDate dateBirth, String fio, int id) {
-        super(LocalDate.now().toString(), "Petrov I.O.", 29);
+    public Teacher(String fio,LocalDate dateBirth, int id) {
+        super("Petrov I.O.",LocalDate.now().toString(), 29);
     }
 
     public Teacher() {
-        super(LocalDate.now().toString(), "Petrov I.O.", 29);
+        super("Petrov I.O.",LocalDate.now().toString(), 29);
     }
 
     public Teacher(String dateBirth, String fio) {
-        super(dateBirth, fio);
+        super(fio,dateBirth);
     }
 
 
@@ -37,8 +37,8 @@ public class Teacher extends User{
     @Override
     public String toString() {
         return "Teacher{" +
-                "dateBirth='" + dateBirth + '\'' +
                 ", fio='" + fio + '\'' +
+                "dateBirth='" + dateBirth + '\'' +
                 ", id=" + id +
                 '}';
     }

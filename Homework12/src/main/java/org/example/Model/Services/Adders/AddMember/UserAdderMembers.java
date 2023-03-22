@@ -1,6 +1,7 @@
 package org.example.Model.Services.Adders.AddMember;
 
 import org.example.Model.Services.UserService;
+import org.example.Model.Services.Adders.Validity.Validity;
 
 /**
  * Абстрактный класс добавления юзеров
@@ -20,15 +21,22 @@ import org.example.Model.Services.UserService;
  */
 public abstract class UserAdderMembers implements AdderMembers {
     UserService us;
+    Validity validity;
 
     public UserAdderMembers(UserService userService) {
         this.us = userService;
+        this.validity = new Validity();
     }
 
     @Override
     public String date() {
-        us.showInfo("\nДата рождения: ");
-        return us.userEnter();
+        us.showInfo("\nДата рождения (дд.мм.гггг): ");
+        String value = us.userEnter();
+        if (!validity.dateCheck(value)) {
+            us.showInfo("Ошибка ввода!");
+            return date();
+        }
+        return value;
     }
 
     @Override

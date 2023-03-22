@@ -19,10 +19,18 @@ public abstract class Group<U1 extends User, U2 extends User>{
         this.members = members;
     }
 
+    /**
+     * Вернуть руководителя группы
+     * @return Наследник User-а
+     */
     public U1 getLeader() {
         return leader;
     }
 
+    /**
+     * Вернуть список участников
+     * @return Лист наследников User-а
+     */
     public List<U2> getMembers() {
         return members;
     }

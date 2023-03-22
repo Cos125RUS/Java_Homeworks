@@ -11,12 +11,12 @@ public class Student extends User{
     int groupId;
     List<Integer> grades;
 
-    public Student(String dateBirth, String fio) {
-        super(dateBirth, fio);
+    public Student(String fio,String dateBirth) {
+        super(fio,dateBirth);
     }
 
     public Student() {
-        super(LocalDate.now().toString(), "Ivanov I.O.", 23);
+        super("Ivanov I.O.",LocalDate.now().toString(), 23);
     }
 
 
@@ -35,8 +35,8 @@ public class Student extends User{
     @Override
     public String toString() {
         return "Student{" +
-                "dateBirth='" + dateBirth + '\'' +
                 ", fio='" + fio + '\'' +
+                "dateBirth='" + dateBirth + '\'' +
                 ", id=" + id +
                 '}';
     }

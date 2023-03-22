@@ -17,6 +17,9 @@ public class Controller implements ControllerImpl{
     List<Teacher> teachers;
     List<StudyGroup> studyGroups;
 
+    /**
+     * Контроллер для управления приложением
+     */
     public Controller() {
         this.us = new UserService();
         this.students = new ArrayList<>();
@@ -24,6 +27,9 @@ public class Controller implements ControllerImpl{
         this.studyGroups = new ArrayList<>();
     }
 
+    /**
+     * Стартер приложения
+     */
     @Override
     public void start() {
         String userChoice = "0";
