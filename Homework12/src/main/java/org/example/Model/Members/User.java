@@ -20,6 +20,12 @@ public abstract class User {
         this.id = ++count;
     }
 
+    public User(int id, String fio, String dateBirth) {
+        this.dateBirth = new AdderDate(dateBirth).addDate();
+        this.fio = fio;
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +

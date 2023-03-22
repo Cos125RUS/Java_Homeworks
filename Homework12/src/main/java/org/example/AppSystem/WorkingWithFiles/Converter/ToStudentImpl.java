@@ -1,4 +1,4 @@
-package org.example.AppSystem.WorkingWithFiles.Parsing;
+package org.example.AppSystem.WorkingWithFiles.Converter;
 
 import org.example.Model.Members.Student;
 
@@ -6,5 +6,5 @@ import org.example.Model.Members.Student;
  * Интерфейс для парсинга студентов
  */
 public interface ToStudentImpl {
-    Student pars(String line);
+    Student toStudent(String line);
 }

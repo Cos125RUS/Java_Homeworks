@@ -12,7 +12,8 @@ import java.util.List;
  */
 public class ControllerWithLoad extends Controller{
 
-    public ControllerWithLoad(List<Student> students, List<Teacher> teachers, List<StudyGroup> studyGroups) {
+    public ControllerWithLoad(List<Student> students, List<Teacher> teachers,
+                              List<StudyGroup> studyGroups) {
         super.students = students;
         super.teachers = teachers;
         super.studyGroups = studyGroups;

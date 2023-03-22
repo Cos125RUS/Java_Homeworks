@@ -17,6 +17,11 @@ public class Teacher extends User{
         super(fio,dateBirth);
     }
 
+    public Teacher(int id, String fio, String dateBirth, int experience) {
+        super(id, fio, dateBirth);
+        this.experience = experience;
+    }
+
 
     public int getExperience() {
         return experience;
@@ -28,7 +33,7 @@ public class Teacher extends User{
 
     @Override
     public String toString() {
-        return "(Студент id=" + id +
+        return "(Преподаватель id=" + id +
                 ") ФИО:'" + fio + '\'' +
                 ", " + dateBirth +
                 ", Стаж - " + experience;

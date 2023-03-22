@@ -29,12 +29,11 @@ public class StudyGroup extends Group<Teacher, Student>{
 
     @Override
     public String toString() {
-        return "StudyGroup{" +
-                "groupId=" + groupId +
-                ", leader=" + leader.getFio() +
-                ", members=" + members.size() +
-                '}';
+        return "Группа №" + groupId +
+                ", Куратор: " + leader.getFio() +
+                ", Количество учащихся:" + members.size();
     }
+
 
     /**
      * @return номер группы

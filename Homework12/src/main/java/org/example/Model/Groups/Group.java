@@ -1,5 +1,6 @@
 package org.example.Model.Groups;
 
+import org.example.Model.Members.Student;
 import org.example.Model.Members.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @param <U1> Анонимный класс для лидера (куратор, зав.кафедрой, ректор)
  * @param <U2> Анонимный класс для списка юзеров
  */
-public abstract class Group<U1 extends User, U2 extends User>{
+public abstract class Group<U1 extends User, U2 extends User> implements GroupImpl{
     U1 leader;
     List<U2> members;
 
@@ -33,5 +34,14 @@ public abstract class Group<U1 extends User, U2 extends User>{
      */
     public List<U2> getMembers() {
         return members;
+    }
+
+    @Override
+    public String groupToString() {
+        StringBuilder sb = new StringBuilder();
+        for (U2 m: members) {
+            sb.append(m.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }

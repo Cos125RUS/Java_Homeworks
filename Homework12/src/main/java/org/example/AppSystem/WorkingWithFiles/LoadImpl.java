@@ -1,6 +1,8 @@
 package org.example.AppSystem.WorkingWithFiles;
 
+import org.example.Model.Groups.StudyGroup;
 import org.example.Model.Members.Student;
+import org.example.Model.Members.Teacher;
 
 import java.util.List;
 
@@ -9,6 +11,6 @@ import java.util.List;
  */
 public interface LoadImpl {
     List<Student> loadStudents();
-    List<String> loadTeachers();
-    List<String> loadStudyGroups();
+    List<Teacher> loadTeachers();
+    List<StudyGroup> loadStudyGroups();
 }

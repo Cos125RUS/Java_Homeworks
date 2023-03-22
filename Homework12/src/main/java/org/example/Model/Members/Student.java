@@ -11,14 +11,13 @@ public class Student extends User{
     int groupId;
     List<Integer> grades;
 
-    public Student(String fio,String dateBirth) {
-        super(fio,dateBirth);
+    public Student(String fio, String dateBirth) {
+        super(fio, dateBirth);
     }
 
     public Student(int id, String fio, String dateBirth, int groupId) {
-        super(fio, dateBirth);
+        super(id, fio, dateBirth);
         this.groupId = groupId;
-        super.id = id;
     }
 
     public int getGroupId() {

@@ -21,8 +21,8 @@ public class GetterGroupList<U extends Group> implements GetterGroupImpl{
     public String showGroupList(int index) {
         StringBuilder sb = new StringBuilder();
         U group = groups.get(index);
-        sb.append("Group Leader: ").append(group.getLeader().toString()).append("\n");
-        sb.append("Members:\n").append(group.getMembers().toString());
+        sb.append("Руководит: ").append(group.getLeader().toString()).append("\n");
+        sb.append("Состав:\n").append(group.groupToString());
         return sb.toString();
     }
 }
