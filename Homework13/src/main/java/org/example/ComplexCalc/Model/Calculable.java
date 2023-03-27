@@ -1,53 +1,42 @@
 package org.example.ComplexCalc.Model;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class Calculable implements ICalculable {
-    private ImaginaryNumber primaryArg;
-    private Logger logger;
+    protected ImaginaryNumber primaryArg;
 
-    public Calculable(ImaginaryNumber primaryArg) throws IOException {
+    public Calculable(ImaginaryNumber primaryArg) {
         this.primaryArg = primaryArg;
-        this.logger = new Logger();
-        logger.newLog(primaryArg.toString());
     }
 
     @Override
-    public Calculable sum(ImaginaryNumber number) throws IOException{
-        logger.newLog(" + " + number.toString());
+    public Calculable sum(ImaginaryNumber number) {
         primaryArg = new ImaginaryNumber(primaryArg.getReal() + number.getReal(),
                 primaryArg.getImaginary() + number.getImaginary());
         return this;
     }
 
     @Override
-    public Calculable difference(ImaginaryNumber number) throws IOException{
-        logger.newLog(" - " + number.toString());
+    public Calculable difference(ImaginaryNumber number) {
         primaryArg = new ImaginaryNumber(primaryArg.getReal() - number.getReal(),
                 primaryArg.getImaginary() - number.getImaginary());
         return this;
     }
 
     @Override
-    public Calculable multi(ImaginaryNumber number) throws IOException{
-        logger.newLog(" * " + number.toString());
+    public Calculable multi(ImaginaryNumber number) {
         primaryArg = new ImaginaryNumber(primaryArg.getReal() * number.getReal(),
                 primaryArg.getImaginary() * number.getImaginary());
         return this;
     }
 
     @Override
-    public Calculable quotient(ImaginaryNumber number) throws IOException{
-        logger.newLog(" / " + number.toString());
+    public Calculable quotient(ImaginaryNumber number) {
         primaryArg = new ImaginaryNumber(primaryArg.getReal() / number.getReal(),
                 primaryArg.getImaginary() / number.getImaginary());
         return this;
     }
 
     @Override
-    public ImaginaryNumber getResult() throws IOException{
-        logger.newLog(" = " + primaryArg.toString() + "\n");
+    public ImaginaryNumber getResult() {
         return primaryArg;
     }
 }

@@ -1,10 +1,12 @@
 package org.example.ComplexCalc.Controller;
 
+import org.example.ComplexCalc.Model.CalcWithLog;
 import org.example.ComplexCalc.Model.Calculable;
 import org.example.ComplexCalc.Model.ImaginaryNumber;
 import org.example.ComplexCalc.View.ViewCalculator;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class Calculator implements ICalculator{
     private final ViewCalculator view;
@@ -22,7 +24,7 @@ public class Calculator implements ICalculator{
     public void run() throws IOException {
         while (true) {
             view.show(arg1);
-            this.calc = new Calculable(newImgNum());
+            this.calc = new CalcWithLog(newImgNum());
             while (true) {
                 String cmd = view.prompt("Введите команду (+, -, *, /, =) : ");
                 if (cmd.equals("*")) {
@@ -51,7 +53,7 @@ public class Calculator implements ICalculator{
                 }
             }
             String cmd = view.prompt("\nЕще посчитать (Y/N)?");
-            if (cmd.equals("Y")) {
+            if (cmd.toLowerCase().equals("y")) {
                 continue;
             }
             break;
