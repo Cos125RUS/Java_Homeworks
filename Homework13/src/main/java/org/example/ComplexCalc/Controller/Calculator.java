@@ -60,7 +60,7 @@ public class Calculator implements ICalculator{
         }
     }
 
-    private ImaginaryNumber newImgNum(){
+    private ImaginaryNumber newImgNum() {
         return new ImaginaryNumber(view.promptInt("real = "),
                 view.promptInt("imaginary = "));
     }
