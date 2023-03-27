@@ -4,9 +4,7 @@ import org.example.ComplexCalc.Model.CalcWithLog;
 import org.example.ComplexCalc.Model.Calculable;
 import org.example.ComplexCalc.Model.ImaginaryNumber;
 import org.example.ComplexCalc.View.ViewCalculator;
-
 import java.io.IOException;
-import java.util.Locale;
 
 public class Calculator implements ICalculator{
     private final ViewCalculator view;
