@@ -20,6 +20,6 @@ public class ImaginaryNumber {
 
     @Override
     public String toString() {
-        return String.format("%d + %di", real, imaginary);
+        return String.format("(%d + %di)", real, imaginary);
     }
 }

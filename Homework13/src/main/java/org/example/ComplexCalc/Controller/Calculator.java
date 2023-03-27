@@ -4,20 +4,24 @@ import org.example.ComplexCalc.Model.Calculable;
 import org.example.ComplexCalc.Model.ImaginaryNumber;
 import org.example.ComplexCalc.View.ViewCalculator;
 
+import java.io.IOException;
+
 public class Calculator implements ICalculator{
-    private ViewCalculator view;
+    private final ViewCalculator view;
     private Calculable calc;
-    private String arg2;
+    private final String arg1;
+    private final String arg2;
 
     public Calculator() {
         this.view = new ViewCalculator();
-        arg2 = "Введите второе вещественное число:";
+        arg1 = "Введите первое вещественное число:\n";
+        arg2 = "Введите второе вещественное число:\n";
     }
 
     @Override
-    public void run() {
+    public void run() throws IOException {
         while (true) {
-            view.show("Введите первое вещественное число:\n");
+            view.show(arg1);
             this.calc = new Calculable(newImgNum());
             while (true) {
                 String cmd = view.prompt("Введите команду (+, -, *, /, =) : ");
