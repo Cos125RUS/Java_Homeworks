@@ -62,7 +62,7 @@ public class List {
         System.out.println();
     }
 
-    public void revers() {
+    public void revers() { // O(n^2)
         if (head != null && head.next != null) {
             Node last = null;
             while (head.next != last) {
