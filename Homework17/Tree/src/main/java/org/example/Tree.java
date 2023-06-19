@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Random;
+
 public class Tree {
     private Node root;
     private int size;
@@ -151,9 +153,10 @@ public class Tree {
     private enum Color {RED, BLACK}
 
     public static void main(String[] args) {
+        Random random = new Random();
         Tree tree = new Tree();
-        for (int i = 1; i < 10; i++) {
-            tree.add(i);
+        for (int i = 1; i < 20; i++) {
+            tree.add(random.nextInt(1,100));
         }
         tree.print();
     }
