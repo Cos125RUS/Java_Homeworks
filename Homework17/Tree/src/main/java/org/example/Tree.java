@@ -34,11 +34,6 @@ public class Tree {
         else
             System.out.print("L:null");
         System.out.print("\t\t");
-        if (node.parent != null)
-            System.out.printf("P:" + node.parent.value);
-        else
-            System.out.print("P:null");
-        System.out.print("\t\t");
         if (node.right != null)
             System.out.printf("R:" + node.right.value);
         else
@@ -50,113 +45,95 @@ public class Tree {
     }
 
     public boolean add(int value) {
-        if (root != null)
-            return add(value, root, null);
+        if (root != null) {
+            boolean res = add(value, root);
+            root = rebalance(root);
+            root.color = Color.BLACK;
+            return res;
+        }
         else {
-            root = new Node();
-            root.value = value;
+            root = new Node(value);
             root.color = Color.BLACK;
             size = 1;
             return true;
         }
     }
 
-    private boolean add(int value, Node cur, Node par) {
-        if (cur == null) {
-            cur = new Node();
-            cur.value = value;
-            cur.color = Color.RED;
-            cur.parent = par;
-            if (value > par.value)
-                par.right = cur;
-            else
-                par.left = cur;
-            size++;
-            rebalance();
-            return true;
-        } else if (cur.value == value) {
+    private boolean add(int value, Node node) {
+        if (node.value == value)
             return false;
-        } else {
-            if (cur.value > value)
-                return add(value, cur.left, cur);
-            else
-                return add(value, cur.right, cur);
+        else {
+            if (node.value > value) {
+                if (node.left != null) {
+                    boolean result = add(value, node.left);
+                    node.left = rebalance(node.left);
+                    return result;
+                } else {
+                    node.left = new Node(value);
+                    size++;
+                    return true;
+                }
+            } else {
+                if (node.right != null) {
+                    boolean result = add(value,node.right);
+                    node.right = rebalance(node.right);
+                    return result;
+                } else {
+                    node.right = new Node(value);
+                    size++;
+                    return true;
+                }
+            }
         }
     }
 
-    private void rebalance() {
-        rebalance(root);
-        if (root.color != Color.BLACK)
-            root.color = Color.BLACK;
+    private Node rebalance(Node node) {
+        Node result = node;
+        boolean flag;
+        do {
+            flag = false;
+            if (result.right != null && result.right.color == Color.RED &&
+                    (result.left == null || result.left.color == Color.BLACK)) {
+                flag = true;
+                result = rightSwap(result);
+            }
+            if (result.left != null && result.left.color == Color.RED &&
+                    (result.left.left != null &&
+                            result.left.left.color == Color.RED)) {
+                flag = true;
+                result = leftSwap(result);
+            }
+            if (result.left != null && result.left.color == Color.RED &&
+                    (result.right != null && result.right.color == Color.RED)) {
+                flag = true;
+                colorSwap(result);
+            }
+        } while (flag);
+        return result;
     }
 
-    private void rebalance(Node node) {
-        if (node != null) {
-            node = swap(node);
-            rebalance(node.left);
-            rebalance(node.right);
-        }
-    }
-
-    private Node swap(Node node) {
-        Node res = node;
-        if (node.left == null && node.right != null && node.right.right != null)
-            res = rightSwap(node, node.right);
-        if (node.right == null && node.left != null && node.left.left != null)
-            res = leftSwap(node, node.left);
-
-        if (node.right != null && node.left != null &&
-                node.right.color == Color.RED && node.left.color == Color.BLACK)
-            res = rightSwap(node, node.right);
-        if (node.left != null && node.left.left != null &&
-                node.left.color == Color.RED && node.left.left.color == Color.RED)
-            res = leftSwap(node, node.left);
-        if (node.right != null && node.right.right != null &&
-                node.right.color == Color.RED && node.right.right.color == Color.RED)
-            res = rightSwap(node, node.right);
-        if (node.left != null && node.right != null &&
-                node.left.color == Color.RED && node.right.color == Color.RED)
-            colorSwap(node, node.left, node.right);
-
-        if (node.right != null && node.right.color == Color.RED)
-            node.right.color = Color.BLACK;
-        if (node.left == null && node.right == null)
-            node.color = Color.BLACK;
-        return res;
-    }
-
-    private Node leftSwap(Node par, Node left) {
-        if (par == root)
-            root = left;
-        left.parent = par.parent;
-        par.parent = left;
-        par.left = left.right;
-        left.right = par;
-        if (left.parent != null)
-            left.parent.left = left;
-        left.color = Color.BLACK;
-        par.color = Color.RED;
+    private Node leftSwap(Node node) {
+        Node left = node.left;
+        node.left = left.right;
+        left.right = node;
+        left.color = node.color;
+        node.color = Color.RED;
         return left;
     }
 
-    private Node rightSwap(Node par, Node right) {
-        if (par == root)
-            root = right;
-        right.parent = par.parent;
-        par.parent = right;
-        par.right = right.left;
-        right.left = par;
-        if (right.parent != null)
-            right.parent.right = right;
-        par.color = Color.RED;
-        right.color = Color.BLACK;
+    private Node rightSwap(Node node) {
+        Node right = node.right;
+        node.right = right.left;
+        right.left = node;
+        right.color = node.color;
+        node.color = Color.RED;
         return right;
     }
 
-    private void colorSwap(Node par, Node left, Node right) {
-        par.color = Color.RED;
-        left.color = Color.BLACK;
-        right.color = Color.BLACK;
+    private void colorSwap(Node node) {
+        node.right.color = Color.BLACK;
+        node.left.color = Color.BLACK;
+        node.color = Color.RED;
     }
 
     private class Node {
@@ -164,7 +141,11 @@ public class Tree {
         Color color;
         Node left;
         Node right;
-        Node parent;
+
+        public Node(int value) {
+            this.value = value;
+            this.color = Color.RED;
+        }
     }
 
     private enum Color {RED, BLACK}
