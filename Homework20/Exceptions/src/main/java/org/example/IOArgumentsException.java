@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.IOException;
+
 public class IOArgumentsException extends Exception {
     public IOArgumentsException(){
         super("Ошибка ввода аргументов");
@@ -68,5 +70,11 @@ class DateNotValidException extends NotCurrentDateValueError{
 
     public DateNotValidException(String e) {
         super(e);
+    }
+}
+
+class DataWrite extends IOException {
+    public DataWrite(){
+        super("Ошибка записи файла!");
     }
 }

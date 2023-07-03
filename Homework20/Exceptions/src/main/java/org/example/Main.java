@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
@@ -12,16 +14,13 @@ public class Main {
         String[] arguments = new String[5];
         try {
             arguments = splitLine(line);
-
+            Data data = new Data(arguments);
+            try {
+                writeData(data);
+            } catch (DataWrite e) {
+                e.printStackTrace();
+            }
         } catch (IOArgumentsException e) {
-            e.printStackTrace();
-        }
-        Data data = new Data(arguments);
-        String filename = "data/" + data.getSurname();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename, true))) {
-            bw.write(data.toString());
-        } catch (IOException e) {
-            System.err.println("Ошибка записи файла!");
             e.printStackTrace();
         }
     }
@@ -117,6 +116,18 @@ public class Main {
 
             default:
                 throw new GenderError();
+        }
+    }
+
+    public static void writeData(Data data) throws DataWrite {
+        if (!Files.exists(Path.of("data"))){
+            new File("data").mkdir();
+        }
+        String filename = "data/" + data.getSurname();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename, true))) {
+            bw.write(data.toString());
+        } catch (IOException e) {
+            throw new DataWrite();
         }
     }
 
